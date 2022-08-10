@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script> 
+// $(document).ready(function(){
+//   $("button").click(function(){
+//     $("#test").animate({
+//       top: '400px'
+//     }, 10000);
+//   });
+// });
+$(document).ready(function(){
+  $("#run").click(function(){
+  	var val = document.getElementById("data").value;
+  	time = Number(val) * 1000;
+  	val = val + "0" + "px";
+  	$("#reset").prop('disabled', true);
+  	$("#run").prop('disabled', true);
+   $("#test").animate({
+         top: val
+     }, time);
+   setTimeout(function() {
+   $("#reset").prop('disabled', false);
+   }, time);
+  });
+});
+$(document).ready(function(){
+  $("#reset").click(function(){
+   $("#test").animate({
+         top: '0px'
+     });
+   $("#run").prop('disabled', false);
+  });
+});
+</script> 
+<style>
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#test{
+position:absolute;
+width:20;
+height:20;
+margin-top: 43px;
+margin-left: 73px;
+}
+#test1{
+position:absolute;
+width:20;
+height:20;
+z-index:0;
+left:45%;
+background:white
+}
+.parent{
+position:absolute;
+width:20;
+height:20;
+z-index:0;
+left:45%;
+background:white;
+display: flex;
+}
+#data{
+	text-align: right;
+	width: 50px;
+	margin-left: 10px;
+}
+.classname {
+  animation-name: cssAnimation;
+  animation-duration: 10s;
+}
+@keyframes cssAnimation {
+  from {top: 0px;}
+  to {top: 400px;}
+}
+</style>
+</head>
+<body>
+<div style="display: flex;">
+	<button id="run">Start Animation</button>
+	<button id="reset" style="margin-left: 10px;">reset</button>
+	<input type="text" name="input" id="data">
+	<div style="margin-left: 5px;">cm</div>
+</div>
+
+
+<div class="parent">
+	<div><img src="D:\aDen\dai.PNG"></div>
+	<div id="test">
+		<img id="img" src="D:\aDen\trudien.JPG">
+	</div>
+</div>
+
+<!-- <div id="test" style="background:#98bf21;height:100px;width:100px;position:absolute; position: relative; margin: 0 auto"></div> -->
+
+</body>
+</html>
